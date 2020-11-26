@@ -1,6 +1,5 @@
 package com.coolblue.miniapp.model.remote
 
-import com.coolblue.miniapp.model.PAGE
 import com.coolblue.miniapp.model.entities.ProductResponse
 import retrofit2.Response
 import retrofit2.http.GET
