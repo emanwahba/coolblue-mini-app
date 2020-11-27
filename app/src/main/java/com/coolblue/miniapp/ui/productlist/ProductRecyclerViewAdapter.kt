@@ -36,7 +36,13 @@ class ProductViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     fun bind(item: Product) {
         val context = itemView.context
         itemView.name.text = item.productName
-        itemView.coolblue_title.text = item.coolbluesChoiceInformationTitle
+        if (item.reviewInformation.reviewSummary.reviewCount > 0) {
+            itemView.review_count.text =
+                context.getString(
+                    R.string.review_count,
+                    item.reviewInformation.reviewSummary.reviewCount
+                )
+        }
         itemView.sales_price.text = item.salesPriceIncVat.toString()
         itemView.image.setProductImage(
             item,

@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Mini App</string>
     <string name="hint_text">Search for a product</string>
+    <string name="review_count">%d reviews</string>
 </resources>
