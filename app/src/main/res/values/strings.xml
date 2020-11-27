@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">Mini App</string>
-    <string name="hint_text">Search a product</string>
+    <string name="hint_text">Search for a product</string>
 </resources>

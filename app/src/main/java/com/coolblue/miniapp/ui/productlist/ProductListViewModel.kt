@@ -5,19 +5,22 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.coolblue.miniapp.di.IoDispatcher
 import com.coolblue.miniapp.model.entities.ProductResponse
 import com.coolblue.miniapp.model.repository.ProductRepository
 import com.coolblue.miniapp.util.Result
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
 
 class ProductListViewModel @ViewModelInject constructor(
-    private val productRepository: ProductRepository
+    private val productRepository: ProductRepository,
+    @IoDispatcher private val dispatcher: CoroutineDispatcher
 ) : ViewModel() {
 
     private val _productResponse = MutableLiveData<Result<ProductResponse>>()
     val productResponse: LiveData<Result<ProductResponse>> = _productResponse
 
-    fun searchProduct(query: String, page: Int) = viewModelScope.launch {
+    fun searchProduct(query: String, page: Int) = viewModelScope.launch(dispatcher) {
         _productResponse.postValue(Result.Loading())
 
         val result = productRepository.searchProduct(query, page)
